@@ -20,13 +20,83 @@ import RxDataSources
  */
 
 class FolderViewModel {
-    var folder: Folder
+   
+    //1.ViewModel肯定是需要一个Model来初始化的
+    let folder: BehaviorRelay<Folder>
+   //3. RxSwift 通过序列的变更来实现逻辑,这个属性表示folder的最新值,当folder被删除时会置位nil
+    private let folderUntilDeleted: Observable<Folder?>
     
-    var test: BehaviorRelay<Folder>?
-    
-    init(_ folder: Folder) {
-        self.folder = folder
+    init(_ folder: Folder = Store.shared.rootFolder) {
+        //2.folderModel 需要使可观测的
+        self.folder = BehaviorRelay(value: folder)
         
-//        folder.deleteObservable
+        //4. folderUntilDeleted 表示当前文件夹最新值,如果被删除则为nil
+        folderUntilDeleted = self.folder.flatMapLatest({ (currentFolder) -> Observable<Folder?> in
+            
+            Observable.just(currentFolder)
+                .concat(currentFolder.changeObservable.map({ _ -> Folder in
+                return currentFolder
+            }))
+                .takeUntil(currentFolder.deleteObservable)
+                .concat(Observable.just(nil))
+        })
+            .share(replay: 1, scope: .whileConnected)
     }
+    
+    //MARK:- 分离到ViewModel 的逻辑
+    func create(folderNamed name: String?) {
+        guard let s = name else {
+            return
+        }
+        let newFolder = Folder(name: s, uuid: UUID())
+        self.folder.value.add(newFolder)
+    }
+    
+    func deleteItem(_ item: Item)  {
+        self.folder.value.deleteItem(item)
+    }
+    
+    //MARK: - 数据变形,生成能成直接显示在View的数据. 同时将这些数据变成可观测序列,方便进行绑定
+    var navigationTitle: Observable<String> {
+        return folderUntilDeleted.map { (currentFolder) -> String in
+            guard let folder = currentFolder else {
+                return ""
+            }
+            return folder.parent == nil ?  .recordings : folder.name
+        }
+    }
+    
+    var navigationTitleDriver: Driver<String> {
+        return folderUntilDeleted.asDriver(onErrorJustReturn: nil).map { (currentFolder) -> String in
+            guard let folder = currentFolder else {
+                return ""
+            }
+            return folder.parent == nil ?  .recordings : folder.name
+        }
+    }
+    
+    //数据源
+    var folderContents: Observable<[AnimatableSectionModel<Int,Item>]> {
+        return folderUntilDeleted.map { (currentFolder)  in
+            guard let folder = currentFolder else { return [AnimatableSectionModel(model: 0, items: [])] }
+            return [AnimatableSectionModel(model: 0, items: folder.contents)]
+        }
+    }
+    
+    var folderContentsDriver: Driver<[AnimatableSectionModel<Int,Item>]> {
+        return folderUntilDeleted.asDriver(onErrorJustReturn: nil).map { (currentFolder)  in
+            guard let folder = currentFolder else { return [AnimatableSectionModel(model: 0, items: [])] }
+            return [AnimatableSectionModel(model: 0, items: folder.contents)]
+        }
+    }
+    
+    //MARK: - 工具方法
+    static func textForItem(_ item: Item) -> String {
+        return "\(item.isFolder ? "📁" : "🔊") \(item.name)"
+    }
+    
+}
+
+fileprivate extension String {
+    static let recordings = NSLocalizedString("Recordings", comment: "Heading for the list of recorded audio items and folders.")
 }

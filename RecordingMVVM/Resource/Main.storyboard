@@ -11,7 +11,7 @@
         <!--Play View Controller-->
         <scene sceneID="Shu-LO-MEV">
             <objects>
-                <viewController id="bHT-p2-Rfs" customClass="PlayViewController" customModule="RecordingsMVC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bHT-p2-Rfs" customClass="PlayViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5u5-Jt-gDJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,7 +107,7 @@
         <!--Recordings-->
         <scene sceneID="hwh-tm-iOK">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="xKq-wS-Rig" customClass="FolderViewController" customModule="RecordingsMVC" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="xKq-wS-Rig" customClass="FolderViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bno-pT-tGj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,10 +154,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xKq-wS-Rig" id="o2H-FA-zRZ"/>
-                            <outlet property="delegate" destination="xKq-wS-Rig" id="KFX-2x-CqX"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Recordings" id="k2Z-yM-7me">
                         <rightBarButtonItems>
@@ -185,7 +181,7 @@
         <!--Record View Controller-->
         <scene sceneID="isj-sJ-dJt">
             <objects>
-                <viewController id="Ua7-YQ-OSq" customClass="RecordViewController" customModule="RecordingsMVC" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ua7-YQ-OSq" customClass="RecordViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jAd-A0-XVK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -28,54 +28,45 @@ protocol FolderViewControllerDelegate: class {
 class FolderViewController: UITableViewController {
     
     weak var delegate: FolderViewControllerDelegate?
+    let viewModel = FolderViewModel()
+    let disposeBag = DisposeBag()
     
-    var folder: Folder = Store.shared.rootFolder {
-        didSet {
-            tableView.reloadData()
-            //判断这个新设置的folder 是否是 rootFolder
-            if folder === folder.store?.rootFolder  {
-                title = .recordings
-            }
-            else {
-                title = folder.name
-            }
-        }
+    var dataSource: RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Int,Item>> {
+        return RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Int,Item>>(configureCell: {
+            (dataSource,tableView,index,item) in
+            let identifier = item is Recording ? "RecordingCell" : "FolderCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: index)
+            cell.textLabel!.text = FolderViewModel.textForItem(item)
+            return cell
+        })
     }
     
-    lazy var dataSource = FolderViewControllerDataSource(folder)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftItemsSupplementBackButton = true
-        editButtonItem.tintColor = .darkGray
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-        tableView.dataSource = dataSource
-        
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(handleChangeNotification(_:)),
-//                                               name: Store.changedNotification,
-//                                               object: nil)
+        bindData()
     }
     
-//    deinit {
-//        NotificationCenter.default.removeObserver(self)
-//    }
-//
+    
+    //MARK: - Bind
+    func bindData() {
+        // ??? 
+        tableView.dataSource = nil
+        tableView.delegate = nil
+        viewModel.navigationTitle.bind(to: self.navigationItem.rx.title).disposed(by: disposeBag)
+        viewModel.folderContents.bind(to: self.tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+
    
-//    @objc func handleChangeNotification(_ notification: Notification) {
-//
-//
-//        tableView.reloadData()
-//    }
+
     
     
     // MARK: - Navigation && Action
     @IBAction func createNewFolder(_ sender: Any) {
         modelTextAlert(title: "Create Folder", accept: "Create", placeholder: "Input folder name") { (string) in
             guard let folderName = string, folderName.isEmpty == false else { return }
-            let folder = Folder(name: folderName, uuid: UUID())
-            self.folder.add(folder)
+            self.viewModel.create(folderNamed: folderName)
         }
     }
     
@@ -85,25 +76,25 @@ class FolderViewController: UITableViewController {
     
     //该方法的执行,会在 tableView-didSelecetRowAtIndexPath 之前
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return  }
+//        guard let identifier = segue.identifier else { return  }
         
-        if identifier == .showFolder {
-            guard let folderVC = segue.destination as? FolderViewController else { return  }
-            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
-            guard let folder = folder.contents[indexPath.row] as? Folder else { return }
-            folderVC.folder = folder
-        }
-        else if identifier == .showPlayer{
-            guard let playVc = (segue.destination as? UINavigationController)?.topViewController as? PlayViewController else { return  }
-            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
-            guard let recording = folder.contents[indexPath.row] as? Recording else { return }
-            playVc.recording = recording
-        }
-        else if identifier == .showRecorder{
-            guard let recordVc = segue.destination as? RecordViewController else { return  }
-            recordVc.folder = folder
-        }
-        
+//        if identifier == .showFolder {
+//            guard let folderVC = segue.destination as? FolderViewController else { return  }
+//            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
+//            guard let folder = folder.contents[indexPath.row] as? Folder else { return }
+//            folderVC.folder = folder
+//        }
+//        else if identifier == .showPlayer{
+//            guard let playVc = (segue.destination as? UINavigationController)?.topViewController as? PlayViewController else { return  }
+//            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
+//            guard let recording = folder.contents[indexPath.row] as? Recording else { return }
+//            playVc.recording = recording
+//        }
+//        else if identifier == .showRecorder{
+//            guard let recordVc = segue.destination as? RecordViewController else { return  }
+//            recordVc.folder = folder
+//        }
+//
         //反选
         guard let indexPath = tableView.indexPathForSelectedRow else { return  }
         tableView.deselectRow(at: indexPath, animated: true)

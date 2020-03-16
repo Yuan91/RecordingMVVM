@@ -17,7 +17,6 @@
 		81484EFE241F5899008D51C4 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF1241F5899008D51C4 /* RecordViewController.swift */; };
 		81484EFF241F5899008D51C4 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF2241F5899008D51C4 /* FolderViewController.swift */; };
 		81484F00241F5899008D51C4 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF3241F5899008D51C4 /* PlayViewController.swift */; };
-		81484F01241F5899008D51C4 /* FolderViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */; };
 		81484F02241F5899008D51C4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF6241F5899008D51C4 /* Item.swift */; };
 		81484F03241F5899008D51C4 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF7241F5899008D51C4 /* Folder.swift */; };
 		81484F04241F5899008D51C4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF8241F5899008D51C4 /* Store.swift */; };
@@ -41,7 +40,6 @@
 		81484EF1241F5899008D51C4 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		81484EF2241F5899008D51C4 /* FolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		81484EF3241F5899008D51C4 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
-		81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderViewControllerDataSource.swift; sourceTree = "<group>"; };
 		81484EF6241F5899008D51C4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		81484EF7241F5899008D51C4 /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		81484EF8241F5899008D51C4 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			children = (
 				81484EF7241F5899008D51C4 /* Folder.swift */,
 				81484EF2241F5899008D51C4 /* FolderViewController.swift */,
-				81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */,
 				81484F13241F7FC5008D51C4 /* FolderViewModel.swift */,
 			);
 			path = Folder;
@@ -291,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				81484F02241F5899008D51C4 /* Item.swift in Sources */,
-				81484F01241F5899008D51C4 /* FolderViewControllerDataSource.swift in Sources */,
 				81484F00241F5899008D51C4 /* PlayViewController.swift in Sources */,
 				81484F04241F5899008D51C4 /* Store.swift in Sources */,
 				81484EFB241F5899008D51C4 /* Utilities.swift in Sources */,
@@ -444,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36TQ567TWV;
 				INFOPLIST_FILE = RecordingMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36TQ567TWV;
 				INFOPLIST_FILE = RecordingMVVM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

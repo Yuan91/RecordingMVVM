@@ -24,7 +24,7 @@ final class Coordinator {
         
         let folderVc = folderNavigationController.viewControllers.first as! FolderViewController
         folderVc.delegate = self
-        #warning("设置ViewModel")
+        folderVc.viewModel.folder.accept(Store.shared.rootFolder)
         
         #warning("疑问1:为什么放这里")
         folderVc.navigationItem.leftItemsSupplementBackButton = true
