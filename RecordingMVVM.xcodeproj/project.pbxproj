@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3626B1466AD4E43AA6F310A4 /* Pods_RecordingMVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD79D080BB9617F0818275A /* Pods_RecordingMVVM.framework */; };
+		81484ED9241F570B008D51C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484ED8241F570B008D51C4 /* AppDelegate.swift */; };
+		81484EE2241F570D008D51C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81484EE1241F570D008D51C4 /* Assets.xcassets */; };
+		81484EE5241F570D008D51C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81484EE3241F570D008D51C4 /* LaunchScreen.storyboard */; };
+		81484EFB241F5899008D51C4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EED241F5899008D51C4 /* Utilities.swift */; };
+		81484EFC241F5899008D51C4 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EEE241F5899008D51C4 /* Recorder.swift */; };
+		81484EFD241F5899008D51C4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EEF241F5899008D51C4 /* Player.swift */; };
+		81484EFE241F5899008D51C4 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF1241F5899008D51C4 /* RecordViewController.swift */; };
+		81484EFF241F5899008D51C4 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF2241F5899008D51C4 /* FolderViewController.swift */; };
+		81484F00241F5899008D51C4 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF3241F5899008D51C4 /* PlayViewController.swift */; };
+		81484F01241F5899008D51C4 /* FolderViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */; };
+		81484F02241F5899008D51C4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF6241F5899008D51C4 /* Item.swift */; };
+		81484F03241F5899008D51C4 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF7241F5899008D51C4 /* Folder.swift */; };
+		81484F04241F5899008D51C4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF8241F5899008D51C4 /* Store.swift */; };
+		81484F05241F5899008D51C4 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484EF9241F5899008D51C4 /* Record.swift */; };
+		81484F08241F58C2008D51C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81484F07241F58C2008D51C4 /* Main.storyboard */; };
+		81484F10241F698E008D51C4 /* Item+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F0F241F698E008D51C4 /* Item+Rx.swift */; };
+		81484F12241F72CB008D51C4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F11241F72CB008D51C4 /* Coordinator.swift */; };
+		81484F14241F7FC5008D51C4 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F13241F7FC5008D51C4 /* FolderViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F0EA63084AAAB91705CCCFE /* Pods-RecordingMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingMVVM.release.xcconfig"; path = "Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM.release.xcconfig"; sourceTree = "<group>"; };
+		81484ED5241F570B008D51C4 /* RecordingMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordingMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81484ED8241F570B008D51C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81484EE1241F570D008D51C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81484EE4241F570D008D51C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81484EE6241F570D008D51C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81484EED241F5899008D51C4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		81484EEE241F5899008D51C4 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		81484EEF241F5899008D51C4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		81484EF1241F5899008D51C4 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		81484EF2241F5899008D51C4 /* FolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
+		81484EF3241F5899008D51C4 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderViewControllerDataSource.swift; sourceTree = "<group>"; };
+		81484EF6241F5899008D51C4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		81484EF7241F5899008D51C4 /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		81484EF8241F5899008D51C4 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		81484EF9241F5899008D51C4 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		81484F07241F58C2008D51C4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		81484F0F241F698E008D51C4 /* Item+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Rx.swift"; sourceTree = "<group>"; };
+		81484F11241F72CB008D51C4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		81484F13241F7FC5008D51C4 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		9BD79D080BB9617F0818275A /* Pods_RecordingMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordingMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C653E0D9C258A36DE95BE9F1 /* Pods-RecordingMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81484ED2241F570B008D51C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3626B1466AD4E43AA6F310A4 /* Pods_RecordingMVVM.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27416E11722C1800D43B134E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BD79D080BB9617F0818275A /* Pods_RecordingMVVM.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81484ECC241F570B008D51C4 = {
+			isa = PBXGroup;
+			children = (
+				81484ED7241F570B008D51C4 /* RecordingMVVM */,
+				81484ED6241F570B008D51C4 /* Products */,
+				B6799A6196E616B86DF18CE1 /* Pods */,
+				27416E11722C1800D43B134E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		81484ED6241F570B008D51C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81484ED5241F570B008D51C4 /* RecordingMVVM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81484ED7241F570B008D51C4 /* RecordingMVVM */ = {
+			isa = PBXGroup;
+			children = (
+				81484F0E241F693D008D51C4 /* Play */,
+				81484F0D241F6937008D51C4 /* Record */,
+				81484F0A241F6908008D51C4 /* Folder */,
+				81484ED8241F570B008D51C4 /* AppDelegate.swift */,
+				81484F11241F72CB008D51C4 /* Coordinator.swift */,
+				81484EE6241F570D008D51C4 /* Info.plist */,
+				81484EF5241F5899008D51C4 /* Model */,
+				81484EEC241F5899008D51C4 /* Helper */,
+				81484F09241F5E5B008D51C4 /* Resource */,
+			);
+			path = RecordingMVVM;
+			sourceTree = "<group>";
+		};
+		81484EEC241F5899008D51C4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				81484EED241F5899008D51C4 /* Utilities.swift */,
+				81484EEE241F5899008D51C4 /* Recorder.swift */,
+				81484EEF241F5899008D51C4 /* Player.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		81484EF5241F5899008D51C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81484EF6241F5899008D51C4 /* Item.swift */,
+				81484EF8241F5899008D51C4 /* Store.swift */,
+				81484F0F241F698E008D51C4 /* Item+Rx.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		81484F09241F5E5B008D51C4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				81484F07241F58C2008D51C4 /* Main.storyboard */,
+				81484EE3241F570D008D51C4 /* LaunchScreen.storyboard */,
+				81484EE1241F570D008D51C4 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		81484F0A241F6908008D51C4 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				81484EF7241F5899008D51C4 /* Folder.swift */,
+				81484EF2241F5899008D51C4 /* FolderViewController.swift */,
+				81484EF4241F5899008D51C4 /* FolderViewControllerDataSource.swift */,
+				81484F13241F7FC5008D51C4 /* FolderViewModel.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		81484F0D241F6937008D51C4 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				81484EF9241F5899008D51C4 /* Record.swift */,
+				81484EF1241F5899008D51C4 /* RecordViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		81484F0E241F693D008D51C4 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				81484EF3241F5899008D51C4 /* PlayViewController.swift */,
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		B6799A6196E616B86DF18CE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C653E0D9C258A36DE95BE9F1 /* Pods-RecordingMVVM.debug.xcconfig */,
+				0F0EA63084AAAB91705CCCFE /* Pods-RecordingMVVM.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81484ED4241F570B008D51C4 /* RecordingMVVM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81484EE9241F570D008D51C4 /* Build configuration list for PBXNativeTarget "RecordingMVVM" */;
+			buildPhases = (
+				FF92EB06394BB49C40A9C462 /* [CP] Check Pods Manifest.lock */,
+				81484ED1241F570B008D51C4 /* Sources */,
+				81484ED2241F570B008D51C4 /* Frameworks */,
+				81484ED3241F570B008D51C4 /* Resources */,
+				BF8CA02376CE2DAB8D7A9C83 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecordingMVVM;
+			productName = RecordingMVVM;
+			productReference = 81484ED5241F570B008D51C4 /* RecordingMVVM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81484ECD241F570B008D51C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = alpha;
+				TargetAttributes = {
+					81484ED4241F570B008D51C4 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 81484ED0241F570B008D51C4 /* Build configuration list for PBXProject "RecordingMVVM" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81484ECC241F570B008D51C4;
+			productRefGroup = 81484ED6241F570B008D51C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81484ED4241F570B008D51C4 /* RecordingMVVM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81484ED3241F570B008D51C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81484F08241F58C2008D51C4 /* Main.storyboard in Resources */,
+				81484EE5241F570D008D51C4 /* LaunchScreen.storyboard in Resources */,
+				81484EE2241F570D008D51C4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BF8CA02376CE2DAB8D7A9C83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF92EB06394BB49C40A9C462 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RecordingMVVM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81484ED1241F570B008D51C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81484F02241F5899008D51C4 /* Item.swift in Sources */,
+				81484F01241F5899008D51C4 /* FolderViewControllerDataSource.swift in Sources */,
+				81484F00241F5899008D51C4 /* PlayViewController.swift in Sources */,
+				81484F04241F5899008D51C4 /* Store.swift in Sources */,
+				81484EFB241F5899008D51C4 /* Utilities.swift in Sources */,
+				81484F03241F5899008D51C4 /* Folder.swift in Sources */,
+				81484F14241F7FC5008D51C4 /* FolderViewModel.swift in Sources */,
+				81484F12241F72CB008D51C4 /* Coordinator.swift in Sources */,
+				81484EFF241F5899008D51C4 /* FolderViewController.swift in Sources */,
+				81484F05241F5899008D51C4 /* Record.swift in Sources */,
+				81484ED9241F570B008D51C4 /* AppDelegate.swift in Sources */,
+				81484EFE241F5899008D51C4 /* RecordViewController.swift in Sources */,
+				81484EFD241F5899008D51C4 /* Player.swift in Sources */,
+				81484EFC241F5899008D51C4 /* Recorder.swift in Sources */,
+				81484F10241F698E008D51C4 /* Item+Rx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		81484EE3241F570D008D51C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81484EE4241F570D008D51C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81484EE7241F570D008D51C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81484EE8241F570D008D51C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		81484EEA241F570D008D51C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C653E0D9C258A36DE95BE9F1 /* Pods-RecordingMVVM.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36TQ567TWV;
+				INFOPLIST_FILE = RecordingMVVM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alpha.RecordingMVVM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81484EEB241F570D008D51C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0EA63084AAAB91705CCCFE /* Pods-RecordingMVVM.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36TQ567TWV;
+				INFOPLIST_FILE = RecordingMVVM/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alpha.RecordingMVVM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81484ED0241F570B008D51C4 /* Build configuration list for PBXProject "RecordingMVVM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81484EE7241F570D008D51C4 /* Debug */,
+				81484EE8241F570D008D51C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81484EE9241F570D008D51C4 /* Build configuration list for PBXNativeTarget "RecordingMVVM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81484EEA241F570D008D51C4 /* Debug */,
+				81484EEB241F570D008D51C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81484ECD241F570B008D51C4 /* Project object */;
+}
