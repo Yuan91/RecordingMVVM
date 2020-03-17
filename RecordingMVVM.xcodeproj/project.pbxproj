@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				81484EF7241F5899008D51C4 /* Folder.swift */,
-				81484EF2241F5899008D51C4 /* FolderViewController.swift */,
 				81484F13241F7FC5008D51C4 /* FolderViewModel.swift */,
+				81484EF2241F5899008D51C4 /* FolderViewController.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";

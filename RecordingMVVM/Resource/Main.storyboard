@@ -129,9 +129,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="oGV-0w-bUa" kind="showDetail" identifier="showPlayer" id="ibl-yR-nMR"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FolderCell" textLabel="mqL-Wq-ySm" style="IBUITableViewCellStyleDefault" id="g1t-2J-nJs">
                                 <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
@@ -149,9 +146,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="xKq-wS-Rig" kind="show" identifier="showFolder" id="2MY-sj-Z7v"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -161,7 +155,6 @@
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="createNewRecording:" destination="xKq-wS-Rig" id="Tsi-JM-gLb"/>
-                                    <segue destination="Ua7-YQ-OSq" kind="presentation" identifier="showRecorder" id="8ia-6u-tYx"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="organize" id="2fa-M4-qcQ">
@@ -183,17 +176,17 @@
             <objects>
                 <viewController storyboardIdentifier="recorderViewController" id="Ua7-YQ-OSq" customClass="RecordViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jAd-A0-XVK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18H-gx-Tzb">
-                                <rect key="frame" x="177.5" y="406" width="59.5" height="30"/>
+                                <rect key="frame" x="177.5" y="433" width="59.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aS4-oL-30b">
-                                <rect key="frame" x="30" y="466" width="354" height="40"/>
+                                <rect key="frame" x="30" y="493" width="354" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xQY-9b-0GU"/>
@@ -206,7 +199,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-tH-iol">
-                                <rect key="frame" x="168" y="355" width="78" height="21"/>
+                                <rect key="frame" x="168" y="382" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -283,7 +276,4 @@
             <point key="canvasLocation" x="-142" y="139"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ibl-yR-nMR"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -6,61 +6,64 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol RecordViewControllerDelegate: class {
     func finishedRecording(_ recordVC: RecordViewController)
 }
 
+/**
+ 修改的地方:
+ ①viewModel持有一个Recorder,这个Record应该是可以观测的.每次值的变化,都绑定到timeLabel 上
+ ②stopButton 的点击事件,通过Rx来实现
+ ③点击stop 时,model的处理放到ViewModel 中实现
+ */
 class RecordViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     
     var audioRecorder: Recorder?
-    var folder: Folder?
-    var recording = Recording(name: "", uuid: UUID())
+    
+   
     
     weak var delegate: RecordViewControllerDelegate?
     let viewModel = RecordViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel.text = timeString(0)
+        bind()
+    }
+    
+    func bind() {
+        viewModel.timeLabelText.drive(timeLabel.rx.text).disposed(by: disposeBag)
+        viewModel.dismiss = { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let url = folder?.store?.fileURL(recording) else { return }
-        print(url.absoluteString)
-        
-        audioRecorder = Recorder(url: url, update: { (timeInterval) in
-            if let t = timeInterval{
-                self.timeLabel.text = timeString(t)
-            }
-            else{
-                self.timeLabel.text = timeString(0)
-                self.dismiss(animated: true)
-            }
-        })
-        
-        if audioRecorder == nil {
-            self.dismiss(animated: true)
+        guard let url = viewModel.folder?.store?.fileURL(viewModel.recording) else {
+            delegate?.finishedRecording(self)
+            return
         }
+        print(url.absoluteString)
+
+        audioRecorder = Recorder(url: url, update: { [weak self] (timeInterval) in
+            self?.viewModel.recorderStateChanged(time: timeInterval)
+        })
     }
     
 
     @IBAction func stopClick(_ sender: Any) {
         audioRecorder?.stop()
         modelTextAlert(title: .saveRecording, accept: .save,  placeholder: .nameForRecording) { string in
-            if let name = string {
-                self.recording.setName(name)
-                self.folder?.add(self.recording)
-            }
-            else{
-                self.recording.deleted()
-            }
-            self.dismiss(animated: true)
+            self.viewModel.recordingStopped(recordName: string)
+            self.delegate?.finishedRecording(self)
         }
     }
     
