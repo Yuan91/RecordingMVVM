@@ -25,6 +25,7 @@
 		81484F10241F698E008D51C4 /* Item+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F0F241F698E008D51C4 /* Item+Rx.swift */; };
 		81484F12241F72CB008D51C4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F11241F72CB008D51C4 /* Coordinator.swift */; };
 		81484F14241F7FC5008D51C4 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F13241F7FC5008D51C4 /* FolderViewModel.swift */; };
+		81484F1624207DA9008D51C4 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F1524207DA8008D51C4 /* RecordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		81484F0F241F698E008D51C4 /* Item+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Rx.swift"; sourceTree = "<group>"; };
 		81484F11241F72CB008D51C4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		81484F13241F7FC5008D51C4 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		81484F1524207DA8008D51C4 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		9BD79D080BB9617F0818275A /* Pods_RecordingMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordingMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C653E0D9C258A36DE95BE9F1 /* Pods-RecordingMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				81484EF9241F5899008D51C4 /* Record.swift */,
+				81484F1524207DA8008D51C4 /* RecordViewModel.swift */,
 				81484EF1241F5899008D51C4 /* RecordViewController.swift */,
 			);
 			path = Record;
@@ -295,6 +298,7 @@
 				81484F14241F7FC5008D51C4 /* FolderViewModel.swift in Sources */,
 				81484F12241F72CB008D51C4 /* Coordinator.swift in Sources */,
 				81484EFF241F5899008D51C4 /* FolderViewController.swift in Sources */,
+				81484F1624207DA9008D51C4 /* RecordViewModel.swift in Sources */,
 				81484F05241F5899008D51C4 /* Record.swift in Sources */,
 				81484ED9241F570B008D51C4 /* AppDelegate.swift in Sources */,
 				81484EFE241F5899008D51C4 /* RecordViewController.swift in Sources */,

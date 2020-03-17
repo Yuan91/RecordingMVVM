@@ -27,7 +27,7 @@ class FolderViewModel {
     private let folderUntilDeleted: Observable<Folder?>
     
     init(_ folder: Folder = Store.shared.rootFolder) {
-        //2.folderModel 需要使可观测的
+        //2.folderModel 需要是可观测的,它的变化需要反映到界面上
         self.folder = BehaviorRelay(value: folder)
         
         //4. folderUntilDeleted 表示当前文件夹最新值,如果被删除则为nil
@@ -35,6 +35,7 @@ class FolderViewModel {
             
             Observable.just(currentFolder)
                 .concat(currentFolder.changeObservable.map({ _ -> Folder in
+                    print("folder changeObservable 先到这里")
                 return currentFolder
             }))
                 .takeUntil(currentFolder.deleteObservable)
@@ -50,10 +51,12 @@ class FolderViewModel {
         }
         let newFolder = Folder(name: s, uuid: UUID())
         self.folder.value.add(newFolder)
+        self.folder.accept(self.folder.value)
     }
     
     func deleteItem(_ item: Item)  {
         self.folder.value.deleteItem(item)
+        self.folder.accept(self.folder.value)
     }
     
     //MARK: - 数据变形,生成能成直接显示在View的数据. 同时将这些数据变成可观测序列,方便进行绑定

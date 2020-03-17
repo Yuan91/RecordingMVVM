@@ -32,13 +32,17 @@ class FolderViewController: UITableViewController {
     let disposeBag = DisposeBag()
     
     var dataSource: RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Int,Item>> {
-        return RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Int,Item>>(configureCell: {
-            (dataSource,tableView,index,item) in
+        return RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<Int,Item>>(
+            configureCell: { (dataSource,tableView,index,item) in
             let identifier = item is Recording ? "RecordingCell" : "FolderCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: index)
             cell.textLabel!.text = FolderViewModel.textForItem(item)
             return cell
-        })
+        },
+            canEditRowAtIndexPath: { _, _ in
+                return true
+        }
+        )
     }
     
     
@@ -51,11 +55,29 @@ class FolderViewController: UITableViewController {
     
     //MARK: - Bind
     func bindData() {
-        // ??? 
+        //因为继承 UITableViewController 所以默认带一个 dataSource?
         tableView.dataSource = nil
         tableView.delegate = nil
-        viewModel.navigationTitle.bind(to: self.navigationItem.rx.title).disposed(by: disposeBag)
-        viewModel.folderContents.bind(to: self.tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        
+        viewModel.navigationTitle
+            .bind(to: self.navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
+        viewModel.folderContents
+            .bind(to: self.tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelDeleted(Item.self)
+            .subscribe(onNext: { [weak self] in
+            self?.viewModel.deleteItem($0)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Item.self)
+            .subscribe(onNext: { [weak self]  in
+                self?.delegate?.didSelect($0)
+            })
+            .disposed(by: disposeBag)
     }
 
    
@@ -67,36 +89,12 @@ class FolderViewController: UITableViewController {
         modelTextAlert(title: "Create Folder", accept: "Create", placeholder: "Input folder name") { (string) in
             guard let folderName = string, folderName.isEmpty == false else { return }
             self.viewModel.create(folderNamed: folderName)
+            self.dismiss(animated: true)
         }
     }
     
     @IBAction func createNewRecording(_ sender: Any) {
-        performSegue(withIdentifier: .showRecorder, sender: sender)
+        delegate?.createRecording(in: viewModel.folder.value)
     }
     
-    //该方法的执行,会在 tableView-didSelecetRowAtIndexPath 之前
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let identifier = segue.identifier else { return  }
-        
-//        if identifier == .showFolder {
-//            guard let folderVC = segue.destination as? FolderViewController else { return  }
-//            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
-//            guard let folder = folder.contents[indexPath.row] as? Folder else { return }
-//            folderVC.folder = folder
-//        }
-//        else if identifier == .showPlayer{
-//            guard let playVc = (segue.destination as? UINavigationController)?.topViewController as? PlayViewController else { return  }
-//            guard let indexPath = tableView.indexPathForSelectedRow else { return  }
-//            guard let recording = folder.contents[indexPath.row] as? Recording else { return }
-//            playVc.recording = recording
-//        }
-//        else if identifier == .showRecorder{
-//            guard let recordVc = segue.destination as? RecordViewController else { return  }
-//            recordVc.folder = folder
-//        }
-//
-        //反选
-        guard let indexPath = tableView.indexPathForSelectedRow else { return  }
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
 }

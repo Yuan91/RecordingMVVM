@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol RecordViewControllerDelegate: class {
+    func finishedRecording(_ recordVC: RecordViewController)
+}
+
 class RecordViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
@@ -15,6 +19,9 @@ class RecordViewController: UIViewController {
     var audioRecorder: Recorder?
     var folder: Folder?
     var recording = Recording(name: "", uuid: UUID())
+    
+    weak var delegate: RecordViewControllerDelegate?
+    let viewModel = RecordViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
