@@ -6,6 +6,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: UISlider {
+    public var maximumValue: Binder<Float> {
+        return Binder(self.base, binding: { slider, value in
+            slider.maximumValue = value
+        })
+    }
+}
 
 class PlayViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,86 +27,39 @@ class PlayViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var audioPlayer: Player?
-    var recording: Recording?
+  
+    let viewModel = PlayViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.delegate = self
-        setNoRecordStatus(showOrHidden: false)
-        setPlayerStatus(showOrHidden: false)
-        recordStatusChanged()
-        NotificationCenter.default.addObserver(self,
-                                               selector:#selector(recordChanged(notification:)),
-                                               name: Store.changedNotification,
-                                               object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    //MARK: observer
-    @objc func recordChanged(notification: Notification) {
-        guard let r = notification.object as? Item, r === recording else { return  }
-        recordStatusChanged()
-    }
-    
-    //MARK: ---update---
-    func recordStatusChanged() {
         
-        guard let url = recording?.fileURL else {
-            updateProgress(progress: 0)
-            audioPlayer = nil
-            navigationItem.title = ""
-            setNoRecordStatus(showOrHidden: true)
-            setPlayerStatus(showOrHidden: false)
-            return
-        }
+        let noRecordingObserver = AnyObserver<Bool> {[weak self] (event) in
+               switch event {
+               case .next(let value):
+                self?.setNoRecordStatus(showOrHidden: value)
+               default:break
+               }
+           }
         
-        audioPlayer = Player(url: url, update: { [weak self] (time) in
-            if let t = time {
-                self?.updateProgress(progress: t)
+        let hasRecording = AnyObserver<Bool> { [weak self] (event) in
+            switch event {
+            case .next(let value):
+                self?.setPlayerStatus(showOrHidden: value)
+            default: break
             }
-            else {
-                self?.recording = nil
-            }
-        })
-        
-        //重新创建player 之后,恢复状态
-        if let _ = audioPlayer {
-            updateProgress(progress: 0)
-            navigationItem.title = recording?.name
-            nameTextField?.text = recording?.name
-            setPlayerStatus(showOrHidden: true)
-            setNoRecordStatus(showOrHidden: false)
-        }
-        else {
-            recording = nil
         }
         
-    }
-    
-    func updateProgress(progress:TimeInterval){
-        self.progressLabel.text = timeString(progress)
-        let duration = audioPlayer?.duration ?? 0
-        self.durationLabel.text = timeString(duration)
-        self.progressSlider.maximumValue = Float(duration)
-        self.progressSlider.value = Float(progress)
-        
-        updatePlayButton()
-    }
-    
-    func updatePlayButton()  {
-        if audioPlayer?.isPlaying == true {
-            playButton.setTitle(.pause, for: .normal)
-        }
-        else if audioPlayer?.isPaused == true {
-            playButton.setTitle(.resume, for: .normal)
-        }
-        else{
-            playButton.setTitle(.play, for: .normal)
-        }
+        viewModel.navagtionTitle.bind(to: rx.title).disposed(by: disposeBag)
+        viewModel.noRecording.bind(to: noRecordingObserver).disposed(by: disposeBag)
+        viewModel.hasRecording.bind(to: hasRecording).disposed(by: disposeBag)
+        viewModel.timeLabelText.bind(to: progressLabel.rx.text).disposed(by: disposeBag)
+        viewModel.durationLabelText.bind(to: durationLabel.rx.text).disposed(by: disposeBag)
+        viewModel.sliderDuration.bind(to: progressSlider.rx.maximumValue).disposed(by: disposeBag)
+        viewModel.sliderProgress.bind(to: progressSlider.rx.value).disposed(by: disposeBag)
+        viewModel.playButtonTitle.bind(to: playButton.rx.title(for: .normal)).disposed(by: disposeBag)
+        viewModel.nameText.bind(to: nameTextField.rx.text).disposed(by: disposeBag)
     }
     
     func setPlayerStatus(showOrHidden: Bool) {
@@ -112,11 +75,9 @@ class PlayViewController: UIViewController, UITextFieldDelegate {
         noRecordingLabel.isHidden = !showOrHidden
     }
     
+    //MARK:- delegate
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let r = recording,let text = textField.text {
-            r.setName(text)
-            navigationItem.title = text
-        }
+        viewModel.nameChanged(textField.text)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -127,13 +88,13 @@ class PlayViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: ---Action---
     @IBAction func playClick(_ sender: Any) {
-        audioPlayer?.start()
-        updatePlayButton()
+        viewModel.togglePlay.onNext(())
     }
     
     
     @IBAction func sliderValueChanged(_ sender: Any) {
-        audioPlayer?.setProgress(TimeInterval(progressSlider.value))
+        guard let s = progressSlider else { return }
+        viewModel.setProgress.onNext(TimeInterval(s.value))
     }
     
 

@@ -107,7 +107,7 @@
         <!--Recordings-->
         <scene sceneID="hwh-tm-iOK">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="xKq-wS-Rig" customClass="FolderViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FolderViewControllerID" clearsSelectionOnViewWillAppear="NO" id="xKq-wS-Rig" customClass="FolderViewController" customModule="RecordingMVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bno-pT-tGj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LKv-uP-qQ3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oGV-0w-bUa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="playerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="oGV-0w-bUa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ssh-4j-D6p"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MAJ-MZ-9RT">

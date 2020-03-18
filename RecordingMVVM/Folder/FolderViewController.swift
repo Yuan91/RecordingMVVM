@@ -81,9 +81,6 @@ class FolderViewController: UITableViewController {
     }
 
    
-
-    
-    
     // MARK: - Navigation && Action
     @IBAction func createNewFolder(_ sender: Any) {
         modelTextAlert(title: "Create Folder", accept: "Create", placeholder: "Input folder name") { (string) in

@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController?.preferredDisplayMode = .allVisible
         splitViewController?.delegate = self
         coodinator = Coordinator(splitViewController!)
+        test()
         return true
     }
     

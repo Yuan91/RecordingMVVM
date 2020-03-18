@@ -63,7 +63,16 @@ final class Coordinator {
 // MARK:- FolderViewControllerDelegate
 extension Coordinator: FolderViewControllerDelegate {
     func didSelect(_ item: Item) {
-        
+        if item.isFolder {
+            let folder = item as! Folder
+            let folderVC = storyboard.instantiateFolderViewController(with: folder, delegate: self)
+            folderNavigationController.pushViewController(folderVC, animated: true)
+        }
+        else {
+            let recording = item as! Recording
+            let playerNC = storyboard.instantiatePlayerNavigationViewContoller(with: recording, leftBarItem: splitViewController.displayModeButtonItem)
+            splitViewController.showDetailViewController(playerNC, sender: self)
+        }
     }
     
     func createRecording(in folder: Folder) {
@@ -84,10 +93,34 @@ extension Coordinator: RecordViewControllerDelegate {
 
 //MARK: - 创建ViewController
 extension UIStoryboard {
+    //创建录音界面
     func instantiateRecordViewController(with folder:Folder, delegate: RecordViewControllerDelegate) -> RecordViewController {
         let recordVc = instantiateViewController(withIdentifier: "recorderViewController") as! RecordViewController
         recordVc.delegate = delegate
         recordVc.viewModel.folder = folder
         return recordVc
+    }
+    
+    //创建FolderViewController
+    func instantiateFolderViewController(with folder: Folder, delegate: FolderViewControllerDelegate) -> FolderViewController {
+        let folderVc = instantiateViewController(withIdentifier: "FolderViewControllerID") as! FolderViewController
+        folderVc.viewModel.folder.accept(folder)
+        folderVc.delegate = delegate
+        folderVc.navigationItem.leftItemsSupplementBackButton = true
+        folderVc.editButtonItem.tintColor = .darkGray
+        folderVc.navigationItem.leftBarButtonItem = folderVc.editButtonItem
+        
+        return folderVc
+    }
+    
+    
+    //创建播放界面
+    func instantiatePlayerNavigationViewContoller(with recording:Recording, leftBarItem: UIBarButtonItem) -> UINavigationController {
+        let playNC = instantiateViewController(withIdentifier: "playerNavigationController") as! UINavigationController
+        let playVC = playNC.viewControllers.first as! PlayViewController
+        playVC.viewModel.recording.accept(recording)
+        playVC.navigationItem.leftBarButtonItem = leftBarItem
+        playVC.navigationItem.leftItemsSupplementBackButton = true
+        return playNC
     }
 }

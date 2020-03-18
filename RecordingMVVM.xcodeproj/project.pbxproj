@@ -26,6 +26,8 @@
 		81484F12241F72CB008D51C4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F11241F72CB008D51C4 /* Coordinator.swift */; };
 		81484F14241F7FC5008D51C4 /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F13241F7FC5008D51C4 /* FolderViewModel.swift */; };
 		81484F1624207DA9008D51C4 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F1524207DA8008D51C4 /* RecordViewModel.swift */; };
+		81484F182420C8C6008D51C4 /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F172420C8C5008D51C4 /* PlayViewModel.swift */; };
+		81484F1A2421C2D0008D51C4 /* RxSwiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81484F192421C2CF008D51C4 /* RxSwiftTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		81484F11241F72CB008D51C4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		81484F13241F7FC5008D51C4 /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
 		81484F1524207DA8008D51C4 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		81484F172420C8C5008D51C4 /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
+		81484F192421C2CF008D51C4 /* RxSwiftTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftTest.swift; sourceTree = "<group>"; };
 		9BD79D080BB9617F0818275A /* Pods_RecordingMVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordingMVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C653E0D9C258A36DE95BE9F1 /* Pods-RecordingMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecordingMVVM.debug.xcconfig"; path = "Target Support Files/Pods-RecordingMVVM/Pods-RecordingMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +104,7 @@
 				81484F0A241F6908008D51C4 /* Folder */,
 				81484ED8241F570B008D51C4 /* AppDelegate.swift */,
 				81484F11241F72CB008D51C4 /* Coordinator.swift */,
+				81484F192421C2CF008D51C4 /* RxSwiftTest.swift */,
 				81484EE6241F570D008D51C4 /* Info.plist */,
 				81484EF5241F5899008D51C4 /* Model */,
 				81484EEC241F5899008D51C4 /* Helper */,
@@ -161,6 +166,7 @@
 		81484F0E241F693D008D51C4 /* Play */ = {
 			isa = PBXGroup;
 			children = (
+				81484F172420C8C5008D51C4 /* PlayViewModel.swift */,
 				81484EF3241F5899008D51C4 /* PlayViewController.swift */,
 			);
 			path = Play;
@@ -290,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81484F182420C8C6008D51C4 /* PlayViewModel.swift in Sources */,
 				81484F02241F5899008D51C4 /* Item.swift in Sources */,
 				81484F00241F5899008D51C4 /* PlayViewController.swift in Sources */,
 				81484F04241F5899008D51C4 /* Store.swift in Sources */,
@@ -305,6 +312,7 @@
 				81484EFD241F5899008D51C4 /* Player.swift in Sources */,
 				81484EFC241F5899008D51C4 /* Recorder.swift in Sources */,
 				81484F10241F698E008D51C4 /* Item+Rx.swift in Sources */,
+				81484F1A2421C2D0008D51C4 /* RxSwiftTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

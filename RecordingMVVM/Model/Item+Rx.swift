@@ -24,7 +24,6 @@ extension Item: IdentifiableType, Hashable {
     var changeObservable: Observable<()> {
         //filter 对 序列中的元素按照闭包中的条件进行过滤
         return NotificationCenter.default.rx.notification(Store.changedNotification).filter { [weak self] (note) -> Bool in
-            print("接收到change notification --> 1")
             guard let s = self else { return false }
             if let item = note.object as? Item, item == s, !(note.userInfo?[Item.changeReasonKey] as? String == Item.removed) {
                 return true
@@ -32,9 +31,7 @@ extension Item: IdentifiableType, Hashable {
                 return true
             }
             return false
-        }.map { _ -> () in
-            print("change notification过滤为 changeObservable序列")
-        }
+        }.map { _ in () }
     }
     
     

@@ -9,11 +9,24 @@ import UIKit
 import AVFoundation
 
 class Player: NSObject {
+    
+    enum Activity {
+        case stopped
+        case playing
+        case paused
+    }
+    
+    struct State {
+        var currentTime: TimeInterval
+        var duration: TimeInterval
+        var activity: Activity
+    }
+    
     var timer: Timer?
-    var update: (TimeInterval?) -> ()
+    var update: (State?) -> ()
     var audioPlayer: AVAudioPlayer
     
-    init?(url: URL, update: @escaping (TimeInterval?) -> ()) {
+    init?(url: URL, update: @escaping (State?) -> ()) {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -46,9 +59,18 @@ class Player: NSObject {
         return !audioPlayer.isPlaying && audioPlayer.currentTime > 0
     }
     
+    var state:Player.State {
+        return State(currentTime: audioPlayer.currentTime, duration: audioPlayer.duration, activity: activity)
+    }
+    
+    var activity: Activity {
+        return audioPlayer.isPlaying ? .playing : isPaused ? .paused : .stopped
+    }
+    
     func start()  {
         if audioPlayer.isPlaying {
             stop()
+            notify()
         }
         else {
             audioPlayer.play()
@@ -57,20 +79,26 @@ class Player: NSObject {
             }
             timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { [weak self] _ in
                 guard let weakSelf = self else { return }
-                weakSelf.update(weakSelf.audioPlayer.currentTime)
+                weakSelf.notify()
             })
         }
     }
-    
-    func setProgress(_ time:TimeInterval) {
-        audioPlayer.currentTime = time
-    }
-    
+        
     func stop() {
         timer?.invalidate()
         timer = nil
         audioPlayer.pause()
     }
+    
+    func setProgress(_ time:TimeInterval) {
+        audioPlayer.currentTime = time
+        notify()
+    }
+    
+    func notify() {
+        update(state)
+    }
+    
     
     deinit {
         timer?.invalidate()
@@ -81,7 +109,10 @@ extension Player: AVAudioPlayerDelegate{
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             stop()
-            update(flag ? player.currentTime : nil)
+            notify()
+        }
+        else{
+            update(nil)
         }
     }
 }
